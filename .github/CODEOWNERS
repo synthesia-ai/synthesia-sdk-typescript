@@ -1,0 +1,4 @@
+# Ours, not Fern's: kept through .fernignore. The Enterprise team owns the whole SDK, so with
+# "Require review from Code Owners" on main's ruleset, every pull request needs an Enterprise member's approval,
+# including changes to the manifest, lock file, .github/ (the test and manifest checks) and .fernignore.
+* @synthesia-ai/enterprise

@@ -1,0 +1,33 @@
+# Ours, not Fern's: kept through .fernignore. Fails a pull request that changes the manifest
+# (dependencies, scripts, entry points, build system) until a person other than its author adds the
+# `dependencies-approved` label; see .github/check_manifest.py. A required check on main.
+name: manifest
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+
+permissions:
+  contents: read
+  pull-requests: write  # Reads the label's history, and removes the label on a push
+
+jobs:
+  manifest:
+    # GitHub-hosted with Harden-Runner, like release.yml; the runner's python3 runs the stdlib-only script.
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: step-security/harden-runner@dc2769abcc0fcfbadfc1df54081c1608579ef6b2 # v2.22.2
+        with:
+          egress-policy: block
+          allowed-endpoints: >
+            github.com:443
+            api.github.com:443
+
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+        with:
+          fetch-depth: 2  # The merge commit and main, its first parent
+          persist-credentials: false
+      - name: Check the manifest against main
+        run: python3 .github/check_manifest.py
+        env:
+          GITHUB_TOKEN: ${{ github.token }}

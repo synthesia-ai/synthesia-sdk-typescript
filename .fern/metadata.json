@@ -1,0 +1,18 @@
+{
+    "cliVersion": "5.175.0",
+    "generatorName": "fernapi/fern-typescript-sdk",
+    "generatorVersion": "3.107.7",
+    "generatorConfig": {
+        "namespaceExport": "Synthesia",
+        "defaultTimeoutInSeconds": 90,
+        "packageJson": {
+            "name": "@synthesia-ai/sdk"
+        }
+    },
+    "originGitCommit": "06fc08b57d6f036097e506d0b5e589b45d8b4921",
+    "originGitCommitIsDirty": false,
+    "invokedBy": "ci",
+    "requestedVersion": "0.1.0",
+    "ciProvider": "github",
+    "sdkVersion": "0.1.0"
+}
