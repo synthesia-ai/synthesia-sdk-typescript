@@ -127,4 +127,5 @@ jobs:
           node-version: 24.22.0
 
       - name: Publish
-        run: npm publish package/*.tgz --provenance --access public
+        # ./ matters: without it, npm reads package/<name>.tgz as a GitHub repo shorthand and tries to clone it.
+        run: npm publish ./package/*.tgz --provenance --access public
