@@ -1,0 +1,4 @@
+# Ours, not Fern's: kept through .fernignore. Read by CI's secrets job and the gitleaks pre-commit hook.
+# Gitleaks' default rules with nothing allowlisted. Add an [allowlist] entry only for a reviewed false positive.
+[extend]
+useDefault = true

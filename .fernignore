@@ -1,0 +1,16 @@
+# Specify files that shouldn't be modified by Fern
+# All of .github/ is ours, so Fern can't add, change or remove a workflow, including the release one:
+# our own CI (GitHub-hosted runners, pinned actions, no publish job; see ci.yml's header), the manifest check
+# (changes need the dependencies-approved label) and CODEOWNERS (Enterprise owns the whole repo).
+.github/
+# Secret and internal-reference checks for local commits; CI's secrets job runs the same ones.
+.gitleaks.toml
+.pre-commit-config.yaml
+# Default base URL is exactly https://developers.synthesia.io.
+tests/custom/baseUrl.test.ts
+# Same LICENSE (MIT) and SECURITY.md as the other synthesia-ai repos. Fern's Python LICENSE names the package, not
+# Synthesia, as the copyright holder, and its TypeScript generator writes none.
+LICENSE
+SECURITY.md
+# Fern's CONTRIBUTING.md sends SDK questions to Fern's own issue tracker and invites pull requests we don't take.
+CONTRIBUTING.md

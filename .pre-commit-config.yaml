@@ -1,0 +1,13 @@
+# Ours, not Fern's: kept through .fernignore. Optional local hooks (`pre-commit install`) with the same checks as
+# CI's secrets job, which is the required one.
+repos:
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: 83d9cd684c87d95d656c1458ef04895a7f1cbd8e  # frozen: v8.30.1
+    hooks:
+      - id: gitleaks  # Staged changes, redacted; reads .gitleaks.toml
+  - repo: local
+    hooks:
+      - id: internal-refs
+        name: Check for internal references
+        entry: python3 .github/check_internal_refs.py
+        language: system
